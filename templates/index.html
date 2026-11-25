@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}CarePoint Clinic | Thoughtful Healthcare{% endblock %}
+{% block content %}
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="eyebrow"><span></span> YOUR HEALTH, OUR PRIORITY</span>
+    <h1>Care that helps you feel <em>your best.</em></h1>
+    <p>Thoughtful healthcare, experienced professionals and a welcoming environment — all focused on you.</p>
+    <div class="hero-actions"><a class="btn btn-primary" href="#appointment">Book an Appointment <span>↗</span></a><a class="text-link" href="#services">Explore our services →</a></div>
+    <div class="hero-note"><div class="avatar-stack"><i>+</i><i>✓</i><i>♥</i></div><span><b>Patient-first approach</b><small>Care with comfort and clarity</small></span></div>
+  </div>
+  <div class="hero-visual">
+    <img src="https://images.unsplash.com/photo-1622902046580-2b47f47f5471?auto=format&fit=crop&w=1100&q=85" alt="Doctor in a modern clinic">
+    <div class="visual-card"><span class="card-icon">✚</span><div><b>Here for your health</b><small>Professional care, close to home</small></div></div>
+    <div class="decor decor-one"></div><div class="decor decor-two"></div>
+  </div>
+</section>
+<section class="trust-strip"><div><b>01</b><span>Patient-focused care</span></div><div><b>02</b><span>Qualified professionals</span></div><div><b>03</b><span>Convenient appointments</span></div><div><b>04</b><span>Friendly environment</span></div></section>
+<section class="section about-section" id="about">
+  <div class="section-image"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=85" alt="Healthcare professional speaking with a patient"><div class="experience-card"><strong>Care</strong><span>with compassion</span></div></div>
+  <div class="section-copy"><span class="eyebrow">ABOUT CAREPOINT</span><h2>Healthcare built around <em>you.</em></h2><p>At CarePoint Clinic, we believe good healthcare starts with listening. Our team aims to make every visit clear, comfortable and focused on your individual needs.</p><p>From routine consultations to ongoing care, we are here to support your wellbeing at every step.</p><a class="text-link" href="#contact">Get to know us →</a></div>
+</section>
+<section class="section services-section" id="services">
+  <div class="section-heading"><div><span class="eyebrow">WHAT WE OFFER</span><h2>Care for every <em>stage of life.</em></h2></div><p>Explore our key services. Contact the clinic to confirm availability and suitability.</p></div>
+  <div class="service-grid">
+    <article class="service-card"><span class="service-icon">♡</span><h3>General Consultation</h3><p>Routine health consultations and general medical guidance.</p><a href="#appointment">Book a visit ↗</a></article>
+    <article class="service-card"><span class="service-icon">✚</span><h3>Preventive Care</h3><p>Health check-up guidance and preventive wellness support.</p><a href="#appointment">Book a visit ↗</a></article>
+    <article class="service-card"><span class="service-icon">☼</span><h3>Family Healthcare</h3><p>Friendly care and guidance for individuals and families.</p><a href="#appointment">Book a visit ↗</a></article>
+    <article class="service-card"><span class="service-icon">⌁</span><h3>Diagnostic Guidance</h3><p>Consultation and guidance about appropriate diagnostic services.</p><a href="#appointment">Book a visit ↗</a></article>
+  </div>
+</section>
+<section class="doctor-section" id="doctors"><div class="doctor-image"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=85" alt="Doctor portrait"></div><div class="doctor-copy"><span class="eyebrow">MEET OUR TEAM</span><h2>Expertise with a <em>human touch.</em></h2><p>Our sample doctor profile represents the welcoming, attentive approach we aim to provide. Replace this profile with your clinic's verified doctor details.</p><div class="doctor-name"><b>Dr. A. Sharma</b><span>General Physician · Sample profile</span></div><a class="btn btn-light" href="#appointment">Request an Appointment ↗</a></div></section>
+<section class="appointment-section section" id="appointment">
+  <div class="appointment-intro"><span class="eyebrow">LET'S GET YOU STARTED</span><h2>Request your <em>appointment.</em></h2><p>Complete the form and our clinic team will contact you to confirm availability. Your request is not confirmed until the clinic contacts you.</p><div class="contact-mini"><span>☎</span><div><b>Prefer to call?</b><small>+91 98765 43210 · Sample number</small></div></div></div>
+  <form class="appointment-form" action="{{ url_for('book') }}" method="POST">
+    <div class="form-heading"><b>Appointment request</b><span>Fields marked * are required</span></div>
+    <div class="form-grid">
+      <label>Patient name *<input name="patient_name" required maxlength="120" placeholder="Your full name"></label>
+      <label>Phone number *<input name="phone" required maxlength="30" placeholder="+91"></label>
+      <label>Email address<input name="email" type="email" maxlength="160" placeholder="you@example.com"></label>
+      <label>Service *<select name="service" required><option value="">Select a service</option><option>General Consultation</option><option>Preventive Care</option><option>Family Healthcare</option><option>Diagnostic Guidance</option><option>Other</option></select></label>
+      <label>Preferred doctor<select name="doctor"><option value="">No preference</option><option>Dr. A. Sharma</option></select></label>
+      <label>Preferred date *<input name="appointment_date" type="date" required></label>
+      <label>Preferred time *<select name="appointment_time" required><option value="">Select time</option><option>09:00 AM – 11:00 AM</option><option>11:00 AM – 01:00 PM</option><option>02:00 PM – 04:00 PM</option><option>04:00 PM – 07:00 PM</option></select></label>
+      <label class="full">Message (optional)<textarea name="message" rows="3" maxlength="500" placeholder="Brief, non-sensitive note for the clinic"></textarea></label>
+    </div>
+    <p class="privacy-note">Please do not include diagnoses, medical records, prescriptions or other sensitive health information in this form.</p>
+    <button class="btn btn-primary submit-btn" type="submit">Send Appointment Request ↗</button>
+  </form>
+</section>
+<section class="contact-section section" id="contact"><div><span class="eyebrow">FIND US</span><h2>We're here to <em>help.</em></h2><p>Visit or contact us during clinic hours. Replace these sample details with your real clinic information.</p></div><div class="contact-details"><div><span>⌖</span><p><b>Clinic address</b><small>123 Health Avenue, Your City, India</small></p></div><div><span>☎</span><p><b>Call us</b><small>+91 98765 43210</small></p></div><div><span>◷</span><p><b>Opening hours</b><small>Monday–Saturday · 9:00 AM–7:00 PM</small></p></div></div></section>
+{% endblock %}
