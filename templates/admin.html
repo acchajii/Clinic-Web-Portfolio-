@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Appointments | CarePoint Clinic{% endblock %}
+{% block content %}
+<section class="admin-page"><div class="admin-top"><div><span class="eyebrow">CAREPOINT MANAGEMENT</span><h1>Appointment <em>requests.</em></h1><p>Review requests and update their status.</p></div><a class="btn btn-outline" href="{{ url_for('admin_logout') }}">Log out</a></div>
+<div class="admin-table-wrap"><table><thead><tr><th>Patient</th><th>Contact</th><th>Service / Doctor</th><th>Date & time</th><th>Message</th><th>Status</th><th>Update</th></tr></thead><tbody>
+{% for a in appointments %}<tr><td><b>{{ a.patient_name }}</b><small>#{{ a.id }}</small></td><td>{{ a.phone }}<small>{{ a.email or '—' }}</small></td><td>{{ a.service }}<small>{{ a.doctor or 'No preference' }}</small></td><td>{{ a.appointment_date }}<small>{{ a.appointment_time }}</small></td><td>{{ a.message or '—' }}</td><td><span class="status">{{ a.status }}</span></td><td><form class="status-form" method="POST" action="{{ url_for('update_status', appointment_id=a.id) }}"><select name="status"><option {{ 'selected' if a.status == 'Pending' }}>Pending</option><option {{ 'selected' if a.status == 'Confirmed' }}>Confirmed</option><option {{ 'selected' if a.status == 'Completed' }}>Completed</option><option {{ 'selected' if a.status == 'Cancelled' }}>Cancelled</option></select><button type="submit">Save</button></form></td></tr>
+{% else %}<tr><td colspan="7" class="empty-state">No appointment requests yet.</td></tr>{% endfor %}
+</tbody></table></div><p class="admin-warning">Demo dashboard: only collect the minimum information needed for appointment coordination. Do not store clinical records here.</p></section>
+{% endblock %}
